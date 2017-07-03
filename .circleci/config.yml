@@ -11,8 +11,12 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: npm run test
-  deployment:
-    staging:
-      branch: master
-       heroku:
-       appname: estimeo-highlight
+      - deploy:
+          name: Deploy Master to Heroku
+          command: |
+                  if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                      git push heroku master
+                      heroku run npm build
+                      heroku run nmp start
+                      heroku restart
+                  fi
