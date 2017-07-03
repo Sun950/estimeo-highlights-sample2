@@ -18,16 +18,15 @@ describe('<Welcome />', () => {
     expect(wrapper.find('p').length).toBe(1)
     })
 
-    /*it('h1 equals to Welcome!', () => {
-    const wrapper = shallow(<Welcome />);
-    expect(wrapper.find('h1').text()).toBe('Welcome !')
+    it('shows "Bienvenue !" as title', () => {
+        const wrapper = shallow(<Welcome title="Welcome !" msg="My Message"/>);
+        expect(wrapper.find('h1').text()).toEqual('Welcome !')
     })
 
-     it('p equals to MyMessage', () => {
-     const wrapper = shallow(<Welcome />);
-     expect(wrapper.find('').text()).toBe('My Message')
-     })*/
-
+    it('shows "My Message" as msg', () => {
+        const wrapper = shallow(<Welcome title="Welcome !" msg="My Message"/>);
+        expect(wrapper.find('p').text()).toEqual('My Message')
+    })	
     /*it('will success', () => {
         expect(true).toBe(true)
     })*/
